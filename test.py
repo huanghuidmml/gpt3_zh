@@ -2,8 +2,8 @@ from gpt3 import GPT3ForCausalLM
 from transformers import BertTokenizerFast, GenerationConfig
 
 
-model = GPT3ForCausalLM.from_pretrained("G:\pretrain_weights\Chinese\GPT\gpt3-base-zh")
-tokenizer = BertTokenizerFast.from_pretrained("G:\pretrain_weights\Chinese\GPT\gpt3-base-zh")
+model = GPT3ForCausalLM.from_pretrained("HuiHuang/gpt3-base-zh")
+tokenizer = BertTokenizerFast.from_pretrained("HuiHuang/gpt3-base-zh")
 generate_config = GenerationConfig(
     max_new_tokens=121, eos_token_id=tokenizer.sep_token_id,
     no_repeat_ngram_size=3, top_p=0.9, do_sample=True)

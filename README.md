@@ -4,6 +4,7 @@
 
 我使用transformers对modelscope 的gpt进行了重写，并转换了权重。
 
+目前只支持base和large版本。
 
 # How to use
 ```python
@@ -11,8 +12,8 @@ from gpt3 import GPT3ForCausalLM
 from transformers import BertTokenizerFast, GenerationConfig
 
 
-model = GPT3ForCausalLM.from_pretrained("G:\pretrain_weights\Chinese\GPT\gpt3-base-zh")
-tokenizer = BertTokenizerFast.from_pretrained("G:\pretrain_weights\Chinese\GPT\gpt3-base-zh")
+model = GPT3ForCausalLM.from_pretrained("HuiHuang/gpt3-base-zh")
+tokenizer = BertTokenizerFast.from_pretrained("HuiHuang/gpt3-base-zh")
 generate_config = GenerationConfig(
     max_new_tokens=121, eos_token_id=tokenizer.sep_token_id,
     no_repeat_ngram_size=3, top_p=0.9, do_sample=True)
@@ -39,6 +40,17 @@ while True:
         clean_up_tokenization_spaces=True)
     pred = pred.replace(" ", "")
     print(pred)
+```
+# 转换权重
+
+```python
+
+from gpt3 import convert_damo_to_ours
+
+convert_damo_to_ours(
+    model_path="",
+    save_path=""
+)
 ```
 
 **Reference**  
